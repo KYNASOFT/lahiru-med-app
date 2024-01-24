@@ -1,0 +1,49 @@
+.main-nav
+{
+    @apply grid;
+    max-width: 100%; 
+    @apply bg-blue-200;
+    border: red solid 0.2em;
+}
+.v-nav-bar
+{
+    border: green solid 0.2em;
+    max-width: 18%;
+}
+.h-nav-bar
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @apply bg-blue-400;
+    border: red solid 0.2em;
+}
+
+.main-nav>a
+{
+   @apply uppercase rounded;
+   font-size: 1.8rem;
+   border: black dashed 0.01em;
+}
+.logo-text
+{
+    font-size: 2.0rem;
+}
+.si-btn
+{
+    font-size: 1.8rem;
+    border: black solid 0.1em;
+    @apply rounded uppercase p-1;
+    transition: background-color 0.8s ease-in; 
+    transition: color 0.8s ease-in;    
+    text-align: center;
+}
+
+.si-btn:hover
+{
+    font-size: 1.8rem;
+    border: black solid 0.1em;
+    color: white;
+    @apply rounded uppercase p-1 bg-slate-400;
+       
+}
