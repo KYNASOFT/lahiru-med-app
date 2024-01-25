@@ -1,0 +1,28 @@
+export const users =
+[
+    {id :"1",
+    fname:"Kanchana",
+    lname:"Wimalasena",
+    email:"kanch.prabath@gmail.com",
+    age:"20"},
+    {id :"2",
+    fname:"Lahiru",
+    lname:"Malshan",
+    email:"lahiru@gmail.com",
+    age:"10"},
+    {id :"3",
+    fname:"Dhyan",
+    lname:"Mohottie",
+    email:"dhayn@gmail.com",
+    age:"30"},
+    {id :"4",
+    fname:"Charunya",
+    lname:"Diss",
+    email:"chacha@gmail.com",
+    age:"25"},
+    {id :"5",
+    fname:"Dinujaya",
+    lname:"Indrachapa",
+    email:"dinna@gmail.com",
+    age:"22"}
+]

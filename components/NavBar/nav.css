@@ -1,0 +1,41 @@
+.hor-nav-bar
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @apply p-2 bg-blue-400;
+}
+.logo-text
+{
+    font-size: 2.2rem;
+    color: white;
+    font-weight: 700;
+}
+.si-btn
+{
+    font-size: 2.0rem;
+    @apply border rounded-md bg-cyan-500 text-white w-44 p-1;
+}
+.main-nav
+{
+   
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    gap: 10em;
+
+}
+.main-nav>a
+{
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    border: green solid 0.2rem;
+    @apply rounded-md p-3 bg-cyan-400 text-white;
+    transition:background-color 0.5s ease-in-out;
+    transition:transform 0.4s ease-out;
+}   
+.main-nav>a:hover
+{
+    @apply rounded-md p-3 bg-cyan-500 text-white;
+    transform: translateX(10%);
+}
