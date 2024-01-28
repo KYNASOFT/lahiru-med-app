@@ -4,15 +4,17 @@ import { useState } from 'react'
 import React from 'react'
 import Link from 'next/link'
 import '@/components/Registration/signup.css'
-
+import { NextResponse } from 'next/server'
 
 const signErors ={
-    passmiss:"Retype password did not match",
-    emailInvalid: "Invalid email check again",
-    emailExcist: "User already created sign in instead"
+    passmiss:"The retyped password does not match the provided password. Please ensure both passwords are identical to proceed",
+    emailInvalid: "Please provide a valid email address",
+    emailExcist: "User already created sign in instead",
+    none:""
 }
 
-
+//reg expression to match a valid email 
+const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
 function SignUp() {
 
@@ -22,20 +24,55 @@ function SignUp() {
   const [repass,setRepass] = useState("");
   const [warning,setWarning] = useState("");
  
+  let validEmail;
+  let validPass;
 
   const signUpHandler=async () =>
   {
-      console.log(email,pass,repass);
-      
-      if(pass === repass)
+     
+    //   console.log(email,pass,repass);
+      if(emailPattern.test(email))
       {
-        console.log("Password match");
+        validEmail =true;
+        
       }
       else
       {
-        console.warn("password not match")
+        validEmail = false;
+        setWarning(signErors.emailInvalid);
+      }
+      
+      if(pass === repass)
+      {
+        validPass = true;
+
+      }
+      else
+      {
+        validPass = false;
         setWarning(signErors.passmiss);
       }
+
+      if(validEmail && validPass)
+      {
+        let request = await fetch('api/users',{
+            method:'POST',
+            body: JSON.stringify({email,repass})
+          })
+            request = await request.json();
+    
+            if(request.ok)
+            {
+                console.log("data sent success");
+            }
+            else
+            {
+                console.log("Eror occured");
+            }
+
+      }
+
+      
   }
 
   return (
