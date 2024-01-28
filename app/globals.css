@@ -29,7 +29,6 @@
 
 .wind-main
 {
-    border: green solid 0.2em; 
     grid-row: 2/auto;
     grid-column: 2/9;
 }

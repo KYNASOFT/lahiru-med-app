@@ -6,12 +6,13 @@ import '@/components/Registration/signup.css'
 function SignUp() {
   return (
     <div className=''>
-        <div>
+        <div className='form-head'>
             <h1 className='main-title'>Sign Up</h1>
             <h2 className='des-title'>Connecting You to Care</h2>
         </div>
         <div className='form-body'>
             <input
+                className='form-input'
                 type='email'
                 name='email'
                 placeholder='Enter your email address'
@@ -19,6 +20,7 @@ function SignUp() {
                 onChange={""}
             ></input>
             <input
+                className='form-input'
                 type='password'
                 name='pass'
                 placeholder='Enter a password'
@@ -26,6 +28,7 @@ function SignUp() {
                 onChange={""}
             ></input>
             <input
+                className='form-input'
                 type='password'
                 name='repass'
                 placeholder='Retype password'
@@ -33,10 +36,14 @@ function SignUp() {
                 onChange={""}
             ></input>
         </div>
-        <div>
-            <Link href={'/signin'}>Already have an account Sign in instead</Link>
-            <button>Sign Up</button>
-            <button>Cancel</button>
+        <div className='form-bottom'>
+            <div>
+                <Link className='redirect-link' href={'/signin'}>Already have an account Sign in instead</Link>
+            </div>
+            <div className='btn-wrapper'>
+               <button className='btn-n'>Sign Up</button>
+               <button className='btn-n'>Cancel</button>
+            </div>
         </div>
     </div>
   )
