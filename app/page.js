@@ -1,8 +1,9 @@
 import React from 'react'
+import BookingForm from '@/components/Bookings/BookingForm'
 
 function page() {
   return (
-    <div>This is home page</div>
+    <div>This is Home Page</div>
   )
 }
 
