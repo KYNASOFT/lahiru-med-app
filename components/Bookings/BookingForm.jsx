@@ -2,6 +2,10 @@
 
 import React from 'react'
 import { useState } from 'react'
+import '@/components/Bookings/booking.css'
+import { useRouter } from 'next/router'
+
+
 
 
 function booking() {
@@ -14,70 +18,90 @@ function booking() {
   const [patientBloodGroup,setPatientBloodGroup] = useState("");
   const [patientSymptoms,setPatientSymptoms] = useState("");
 
+  const router = useRouter();
+
+  const bookingHandler = async ()=>
+  {
+    console.log(patientName,patientNic,patientAddress,patientEmail,patientContactNum,patientBloodGroup,patientSymptoms);
+    //Backend integeration
+  }
+
   return (
     <div>
         <div>
            <div>
                 <h1>Patient Details</h1>
             </div>
-            <div>
+            <div className='formbookingpatient-body'>
             <input
                   type="text" 
-                  placeholder='Patient Name (AutoFill)'
+                  placeholder='Patient Name'
                   name='name'
-                  onChange={setPatientName}
+                  onChange={e=>setPatientName(e.target.value)}
+                  value={patientName}
                   ></input>
 
                 <input
                   type="text" 
-                  placeholder='Patient Nic (AutoFill)'
+                  placeholder='Patient Nic'
                   name='nic'
-                  onChange={setPatientNic}
+                  onChange={e=>setPatientNic(e.target.value)}
+                  value={patientNic}
                   ></input>
 
                 <input
                   type="text" 
-                  placeholder='Patient Address (AutoFill)'
+                  placeholder='Patient Address'
                   name='address'
-                  onChange={setPatientAddress}
+                  onChange={e=>setPatientAddress(e.target.value)}
+                  value={patientAddress}
                   ></input>
 
                 <input
                   type="text" 
-                  placeholder='Patient Email (AutoFill)'
+                  placeholder='Patient Email'
                   name='email'
-                  onChange={setPatientEmail}
+                  onChange={e=>setPatientEmail(e.target.value)}
+                  value={patientEmail}
                   ></input>
                 
                 <input
-                  type='number' 
-                  placeholder='Patient Contact Number (AutoFill)'
+                  type='text' 
+                  placeholder='Patient Contact Number'
                   name='contactnum'
-                  onChange={setpatientContatNum}
+                  onChange={e=>setpatientContatNum(e.target.value)}
+                  value={patientContactNum}
                   ></input>
 
                 <input
                   type="text" 
-                  placeholder='Patient Blood Group (AutoFill)'
+                  placeholder='Patient Blood Group'
                   name='bloodgroup'
-                  onChange={setPatientBloodGroup}
+                  onChange={e=>setPatientBloodGroup(e.target.value)}
+                  value={patientBloodGroup}
                   ></input>
 
                 <input
                   type="text" 
                   placeholder='Patient Symptoms'
                   name='symptoms'
-                  onChange={setPatientSymptoms}
+                  onChange={e=>setPatientSymptoms(e.target.value)}
+                  value={patientSymptoms}
                   ></input>
             </div>
             <div>
-                <button className='border rounded p-2 w-20'>Enter Details</button>
+                <button className='border rounded p-2 w-20' onClick={e=>bookingHandler}>Enter Details</button>
+                <button className='border rounded p-2 w-20'onClick={()=>router.push('/')}>Cancel</button>
             </div>
         </div>
 
         <div>
             <div>
                 <h1>Doctor Details</h1>
+            </div>
+
+            <div>
+              
             </div>
         </div>
     </div>
