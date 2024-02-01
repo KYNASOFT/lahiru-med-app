@@ -1,7 +1,7 @@
 .formbookingpatient-body
 {
     
-        margin: 0 auto;
+        margin: 0 0 0 0;
         max-width: 50%;
         border-left: black 3em solid;
         border-right: black 3em solid;
@@ -11,3 +11,15 @@
     
 }
 
+.formbookingdoctor-body
+
+{
+        margin: 0 auto 0 0;
+        max-width: 50%;
+        border-left: black 3em solid;
+        border-right: black 3em solid;
+        display: flex;
+        flex-direction: column;
+        @apply bg-black/10;
+    
+}

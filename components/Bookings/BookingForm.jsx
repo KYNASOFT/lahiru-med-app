@@ -18,7 +18,11 @@ function booking() {
   const [patientBloodGroup,setPatientBloodGroup] = useState("");
   const [patientSymptoms,setPatientSymptoms] = useState("");
 
-  const router = useRouter();
+  const [unit,setUnit] = useState("");
+  const [doc, setDoc] = useState("");
+
+
+  //const router = useRouter();
 
   const bookingHandler = async ()=>
   {
@@ -32,7 +36,7 @@ function booking() {
            <div>
                 <h1>Patient Details</h1>
             </div>
-            <div className='formbookingpatient-body'>
+            <div className='formbookingpatient-body w-1/2 bg-gray-300 p-4'>
             <input
                   type="text" 
                   placeholder='Patient Name'
@@ -91,7 +95,7 @@ function booking() {
             </div>
             <div>
                 <button className='border rounded p-2 w-20' onClick={e=>bookingHandler}>Enter Details</button>
-                <button className='border rounded p-2 w-20'onClick={()=>router.push('/')}>Cancel</button>
+                <button className='border rounded p-2 w-20'/*onClick={()=>router.push('/')}*/>Cancel</button>
             </div>
         </div>
 
@@ -100,8 +104,22 @@ function booking() {
                 <h1>Doctor Details</h1>
             </div>
 
-            <div>
-              
+            <div className='formbookingdoctor-body w-1/2'>
+                <input
+                  type="text"
+                  placeholder='Unit that you are looking for'
+                  name='unit'
+                  onChange={e=>setUnit(e.target.value)}
+                  value={unit}
+                  ></input>
+
+                <input
+                  type="text"
+                  placeholder='Name of the Doctor you are looking for'
+                  name='doctor'
+                  onChange={e=>setDoc(e.target.value)}
+                  value={doc}
+                  ></input>
             </div>
         </div>
     </div>
