@@ -6,7 +6,7 @@ function VerticalBar() {
     <div>
         <div className='main-nav'>
             <Link href="/">Home</Link> 
-            <Link href="/">Sign In</Link>
+            <Link href="/appoinments">Appoinments</Link>
             <Link href="/">Home</Link>
             <Link href="/">Home</Link>
             <Link href="/">Home</Link>

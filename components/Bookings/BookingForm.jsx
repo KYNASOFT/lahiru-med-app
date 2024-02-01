@@ -2,13 +2,14 @@
 
 import React from 'react'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import '@/components/Bookings/booking.css'
-import { useRouter } from 'next/router'
 
 
 
 
-function booking() {
+
+function BookingForm() {
 
   const [patientName,setPatientName] = useState("");
   const [patientNic,setPatientNic]=useState("");
@@ -21,13 +22,15 @@ function booking() {
   const [unit,setUnit] = useState("");
   const [doc, setDoc] = useState("");
 
-
-  //const router = useRouter();
+  const router = useRouter();  
+ 
 
   const bookingHandler = async ()=>
   {
-    console.log(patientName,patientNic,patientAddress,patientEmail,patientContactNum,patientBloodGroup,patientSymptoms);
+    
+     console.log(patientName,patientNic,patientAddress,patientEmail,patientContactNum,patientBloodGroup,patientSymptoms);
     //Backend integeration
+  
   }
 
   return (
@@ -96,8 +99,8 @@ function booking() {
                   ></input>
             </div>
             <div className='btn-wrapper'>
-                <button className='normal-btn' onClick={e=>bookingHandler}>Enter Details</button>
-                <button className='normal-btn'/*onClick={()=>router.push('/')}*/>Cancel</button>
+                <button className='normal-btn' onClick={bookingHandler}>Enter Details</button>
+                <button className='normal-btn'onClick={()=>router.push('/')}>Cancel</button>
             </div>
         </div>
 
@@ -128,4 +131,4 @@ function booking() {
   )
 }
 
-export default booking
+export default BookingForm
