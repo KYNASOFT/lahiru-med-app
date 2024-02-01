@@ -31,18 +31,19 @@ function booking() {
   }
 
   return (
-    <div>
-        <div>
+    <div className='booking-wrapper'>
+        <div className='patient-wrapper'>
            <div>
-                <h1>Patient Details</h1>
+                <h1 className='main-title'>Patient Details</h1>
             </div>
-            <div className='formbookingpatient-body w-1/2 bg-gray-300 p-4'>
+            <div className='form-group'>
             <input
                   type="text" 
                   placeholder='Patient Name'
                   name='name'
                   onChange={e=>setPatientName(e.target.value)}
                   value={patientName}
+
                   ></input>
 
                 <input
@@ -62,7 +63,7 @@ function booking() {
                   ></input>
 
                 <input
-                  type="text" 
+                  type="email" 
                   placeholder='Patient Email'
                   name='email'
                   onChange={e=>setPatientEmail(e.target.value)}
@@ -86,25 +87,26 @@ function booking() {
                   ></input>
 
                 <input
-                  type="text" 
+                  type="description" 
                   placeholder='Patient Symptoms'
                   name='symptoms'
                   onChange={e=>setPatientSymptoms(e.target.value)}
                   value={patientSymptoms}
+                  className='text-box'
                   ></input>
             </div>
-            <div>
-                <button className='border rounded p-2 w-20' onClick={e=>bookingHandler}>Enter Details</button>
-                <button className='border rounded p-2 w-20'/*onClick={()=>router.push('/')}*/>Cancel</button>
+            <div className='btn-wrapper'>
+                <button className='normal-btn' onClick={e=>bookingHandler}>Enter Details</button>
+                <button className='normal-btn'/*onClick={()=>router.push('/')}*/>Cancel</button>
             </div>
         </div>
 
-        <div>
+        <div className='doctor-wrapper'>
             <div>
-                <h1>Doctor Details</h1>
+                <h1 className='main-title'>Doctor Details</h1>
             </div>
 
-            <div className='formbookingdoctor-body w-1/2'>
+            <div className='form-group'>
                 <input
                   type="text"
                   placeholder='Unit that you are looking for'
