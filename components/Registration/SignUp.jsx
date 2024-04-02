@@ -1,42 +1,121 @@
 "use client"
 
+import { useState } from 'react'
 import React from 'react'
 import Link from 'next/link'
 import '@/components/Registration/signup.css'
+import { NextResponse } from 'next/server'
+
+const signErors ={
+    passmiss:"The retyped password does not match the provided password. Please ensure both passwords are identical to proceed",
+    emailInvalid: "Please provide a valid email address",
+    emailExcist: "User already created sign in instead",
+    none:""
+}
+
+//reg expression to match a valid email 
+const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
 function SignUp() {
+
+  //using use state to get inputs
+  const [email,setEmail] = useState("");
+  const [pass,setPass] = useState("");
+  const [repass,setRepass] = useState("");
+  const [warning,setWarning] = useState("");
+ 
+  let validEmail;
+  let validPass;
+
+  const signUpHandler=async () =>
+  {
+     
+    //   console.log(email,pass,repass);
+      if(emailPattern.test(email))
+      {
+        validEmail =true;
+        
+      }
+      else
+      {
+        validEmail = false;
+        setWarning(signErors.emailInvalid);
+      }
+      
+      if(pass === repass)
+      {
+        validPass = true;
+
+      }
+      else
+      {
+        validPass = false;
+        setWarning(signErors.passmiss);
+      }
+
+      if(validEmail && validPass)
+      {
+        let request = await fetch('api/users',{
+            method:'POST',
+            body: JSON.stringify({email,repass})
+          })
+            request = await request.json();
+    
+            if(request.ok)
+            {
+                console.log("data sent success");
+            }
+            else
+            {
+                console.log("Eror occured");
+            }
+
+      }
+
+      
+  }
+
   return (
     <div className=''>
-        <div>
+        <div className='form-head'>
             <h1 className='main-title'>Sign Up</h1>
             <h2 className='des-title'>Connecting You to Care</h2>
+            <h2 className='su-warn'>{warning}</h2>
         </div>
         <div className='form-body'>
             <input
+                className='form-input'
                 type='email'
                 name='email'
                 placeholder='Enter your email address'
-                value={""}
-                onChange={""}
+                value={email}
+                onChange={e=>setEmail(e.target.value)}
             ></input>
             <input
+                className='form-input'
                 type='password'
                 name='pass'
                 placeholder='Enter a password'
-                value={""}
-                onChange={""}
+                value={pass}
+                onChange={e=>setPass(e.target.value)}
             ></input>
             <input
+                className='form-input'
                 type='password'
                 name='repass'
                 placeholder='Retype password'
-                value={""}
-                onChange={""}
+                value={repass}
+                onChange={e=>setRepass(e.target.value)}
             ></input>
         </div>
-        <div>
-            <Link href={'/signin'}>Already have an account Sign in instead</Link>
-            <button>Sign Up</button>
-            <button>Cancel</button>
+        <div className='form-bottom'>
+            <div>
+                <Link className='redirect-link' href={'/signin'}>Already have an account Sign in instead</Link>
+            </div>
+            <div className='btn-wrapper'>
+               <button className='btn-n' onClick={signUpHandler}>Sign Up</button>
+               <button className='btn-n'>Cancel</button>
+            </div>
         </div>
     </div>
   )

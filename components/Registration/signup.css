@@ -1,0 +1,78 @@
+.form-head
+{
+    padding: 4%;
+    margin: 0 auto;
+    max-width: 50%;
+    border-top: black 2em solid;
+    border-left: black 2em solid;
+    border-right: black 2em solid;
+    border-top-right-radius: 80em;
+    @apply bg-black/10;
+}
+
+
+.main-title
+{
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.des-title
+{
+    font-size: 2.0rem;
+    font-weight: 200;
+}
+.su-warn
+{
+    color: red;
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+
+.form-body
+{
+    margin: 0 auto;
+    max-width: 50%;
+    border-left: black 3em solid;
+    border-right: black 3em solid;
+    display: flex;
+    flex-direction: column;
+    @apply bg-black/10;
+}
+.form-input
+{
+    margin: 1.0em auto;
+    font-size: 1.6rem;
+    min-width: 80%;
+    padding: 1%;
+}
+
+.form-bottom
+{
+    border-bottom: black 2em solid;
+    border-left: black 2em solid;
+    border-right: black 2em solid;
+    max-width: 50%;
+    margin: 0 auto;
+    @apply bg-black/10;
+}
+
+.redirect-link
+{
+    font-size: 1.6rem;
+    max-width: 60%;
+    padding-left: 10%;
+}
+.btn-n
+{
+    @apply p-2 w-52 border rounded-2xl h-20 bg-green-400;
+    font-size: 2.0rem;
+}
+.btn-wrapper
+{
+    
+    display: flex;
+    justify-content: space-between;
+    padding: 6%;
+}
