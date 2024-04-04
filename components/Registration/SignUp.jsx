@@ -56,6 +56,35 @@ function SignUp() {
       if(validEmail && validPass)
       {
           try{
+            //here call userExcist api to get if user already registered
+            const resUserExcist = await fetch('api/userExcist',
+              {method:"POST",
+               headers:{
+                "Content-Type":"application/json"
+               },
+               body: JSON.stringify({
+                email
+               })
+              }
+
+            )
+            if(resUserExcist.ok)
+            {
+               const {user} = await resUserExcist.json();
+
+               if(user)
+               {
+                  console.log("User already excist");
+                  setWarning(signErors.emailExcist);
+                  return;
+               }
+            }
+            else{
+              console.error("Sign in Api Error");
+            }
+
+
+
             const res = await fetch('api/users',
             {
               method: "POST",
