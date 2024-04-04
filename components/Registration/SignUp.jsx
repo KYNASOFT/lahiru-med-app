@@ -55,38 +55,36 @@ function SignUp() {
 
       if(validEmail && validPass)
       {
-        // let request = await fetch('api/users',{
-        //     method:'POST',
-        //     body: JSON.stringify({email,repass}) 
-        //   })
-        //     request = await request.json();
-    
-        //     if(request.ok)
-        //     {
-        //         console.log("data sent success");
-        //     }
-        //     else
-        //     {
-        //         console.log("Eror occured");
-        //     }
+          try{
+            const res = await fetch('api/users',
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                email,repass
+              })
+            }
+            
+            )
+            if(res.ok)
+            {
+               console.log("Sent data to the api form sign up")
+            }
+            else
+            {
+               console.log("not sending the data from sign up")
+            }
+          }
+          catch(error)
+          {
+              console.log("Error from sign up - " + error)
+          }
+          
 
-        let request = await fetch('api/users',{method:'POST',body:JSON.stringify(email,repass)})
-              .then(response=>console.log(response))
-              .catch(error =>console.log(error));
-        
-        //request = await request.json();
-        // if(request.ok)
-        // {
-        //   console.log("data sent success");
-        // }
-        // else
-        // {
-        //   console.log("error occured");
-        // }
-        
 
       }
-
       
   }
 

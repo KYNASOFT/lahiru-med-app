@@ -5,19 +5,16 @@ import bcrypt from "bcryptjs"
 
 export async function POST(req,res) 
 {
-
+    try{
     let {email,repass} = await req.json();
     console.log("From the server end",email,repass);
-
     //hashing the password using bcrypt
-    const hashedPassword = await bcrypt.hash(repass,10)
+    const hashedPassword = await bcrypt.hash(repass,10);
 
     //connecting to the database 
     await connectMongoDb();
     //create a new user
     await User.create({email,password: hashedPassword});
-
-
     if(!email || !repass)
     {
         return NextResponse.json(
@@ -30,6 +27,14 @@ export async function POST(req,res)
         {res: "The credential verified user created",ok:true},
         {status:201}
     );
+    
+    }
+    catch(error)
+    {
+       console.log("Eror from the route - something went wrong i can feel it" + error);
+    }
+
+    
 
 }
 
