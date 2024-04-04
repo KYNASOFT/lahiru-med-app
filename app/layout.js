@@ -3,6 +3,7 @@ import "./globals.css";
 import HorizontalBar from "@/components/NavBar/HorizontalBar";
 import VerticalBar from "@/components/NavBar/VerticalBar";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
