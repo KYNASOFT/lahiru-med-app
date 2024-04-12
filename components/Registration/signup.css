@@ -68,6 +68,7 @@
 {
     @apply p-2 w-52 border rounded-2xl h-20 bg-green-400;
     font-size: 2.0rem;
+    transition: background-color 0.4s ease-in;
 }
 .btn-wrapper
 {
@@ -75,4 +76,10 @@
     display: flex;
     justify-content: space-between;
     padding: 6%;
+}
+
+.btn-n:hover
+{
+    @apply bg-green-100;
+    
 }

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import React from 'react'
 import Link from 'next/link'
 import '@/components/Registration/signup.css'
-import { NextResponse } from 'next/server'
+
 
 const signErors ={
     passmiss:"The retyped password does not match the provided password. Please ensure both passwords are identical to proceed",

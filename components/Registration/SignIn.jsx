@@ -1,0 +1,96 @@
+"use client"
+
+import { useState } from 'react'
+import React from 'react'
+import '@/components/Registration/signup.css'
+import Link from 'next/link'
+
+function SignIn() {
+
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+  const [warn,setWarn] =useState("")
+
+  const signInHandler = async() =>{
+
+    //this function should validate user 
+     console.log("this is for debug from signIn page =  email password is " + email + " " + password);  //ready
+     
+     if(!email)
+     {
+         setWarn("Enter an email address")
+         return;
+     }
+     else if(!password)
+     {
+        setWarn("You must fill password to log in")
+        return;
+     }
+     //send this to backend api from here
+     try{
+     const response = await fetch ('api/signin',{
+            method :"POST",
+            headers :{"Content-Type":"application/json"},
+            body:JSON.stringify({email,password})
+        }); 
+
+        if(response.ok)
+        {
+            console.log("success")
+        }
+        else
+        {
+            console.warn("unsuccess log in")
+        }
+     }
+     catch(error)
+     {
+        console.error(error);
+     }
+
+  }
+
+  return (
+    <div className=''>
+        <div className='form-head'>
+            <h1 className='main-title'>Sign In</h1>
+            <h2 className='des-title'>"Welcome back! Your health journey continues here. 
+            Let's securely unlock the door to your medical records and personalized care"</h2>
+            <h3 className='su-warn'>{warn}</h3>
+        </div>
+
+        <div className='form-body'>
+            <input
+                className='form-input'
+                type = "email"
+                name ="email"
+                placeholder="Enter your email address"
+                value ={email}
+                onChange ={e=>setEmail(e.target.value)}>
+            </input>
+
+            <input
+                className='form-input'
+                type = "password"
+                name ="password"
+                placeholder="Enter your password"
+                value ={password}
+                onChange= {e=>setPassword(e.target.value)}>
+            </input>
+        </div>
+
+        <div className='form-bottom'>
+            <div>
+                <Link className='redirect-link' href={'/signup'}>Not registered user. Sign up instead</Link>
+            </div>
+            <div className='btn-wrapper'>
+               <button className='btn-n' onClick={signInHandler}>Sign In</button>
+               <button className='btn-n'>Cancel</button>
+            </div>
+        </div>
+        
+    </div>
+  )
+}
+
+export default SignIn
