@@ -2,7 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import HorizontalBar from "@/components/NavBar/HorizontalBar";
 import VerticalBar from "@/components/NavBar/VerticalBar";
-
+import { AuthProvider } from "./Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className} >
+      <body className={inter.className} ><AuthProvider>
       
         <main className='wrapper'>
           <div className="main-canvas">
@@ -24,11 +24,11 @@ export default function RootLayout({ children }) {
                   <VerticalBar/>
             </div>
             <div className="wind-main">
-                {children}
+              {children}  
             </div>
           </div>
 
-        </main>
+        </main></AuthProvider>
          
       </body>
     </html>

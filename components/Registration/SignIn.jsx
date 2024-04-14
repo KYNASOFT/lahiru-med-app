@@ -1,16 +1,20 @@
 "use client"
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import '@/components/Registration/signup.css'
 import Link from 'next/link'
+import { signIn } from 'next-auth/react'
+
 
 function SignIn() {
 
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
   const [warn,setWarn] =useState("")
-
+  
+  const router = useRouter();
   const signInHandler = async() =>{
 
     //this function should validate user 
@@ -26,27 +30,47 @@ function SignIn() {
         setWarn("You must fill password to log in")
         return;
      }
-     //send this to backend api from here
-     try{
-     const response = await fetch ('api/signin',{
-            method :"POST",
-            headers :{"Content-Type":"application/json"},
-            body:JSON.stringify({email,password})
-        }); 
 
-        if(response.ok)
+     try{
+        const res = await signIn("credentials",{
+            email,
+            password,
+            redirect:false,
+        })
+
+        if(res.error)
         {
-            console.log("success")
+            setWarn("Invalid credentials");
         }
-        else
-        {
-            console.warn("unsuccess log in")
+        else{
+            router.replace('/dashboard');
         }
-     }
-     catch(error)
+     }catch(error)
      {
         console.error(error);
+        setWarn("Unsucessful sign in - server end");
      }
+     //send this to backend api from here
+    //  try{
+    //  const response = await fetch ('api/signin',{
+    //         method :"POST",
+    //         headers :{"Content-Type":"application/json"},
+    //         body:JSON.stringify({email,password})
+    //     }); 
+
+    //     if(response.ok)
+    //     {
+    //         console.log("success")
+    //     }
+    //     else
+    //     {
+    //         console.warn("unsuccess log in")
+    //     }
+    //  }
+    //  catch(error)
+    //  {
+    //     console.error(error);
+    //  }
 
   }
 

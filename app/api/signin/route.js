@@ -25,7 +25,7 @@ export async function POST(req,res)
         if(match)
         {
             return NextResponse.json(
-                {res: "The credential verified user created",ok:true},
+                {res: JSON.stringify(user),ok:true},
                 {status:201}
             )
 
