@@ -51,26 +51,7 @@ function SignIn() {
         setWarn("Unsucessful sign in - server end");
      }
      //send this to backend api from here
-    //  try{
-    //  const response = await fetch ('api/signin',{
-    //         method :"POST",
-    //         headers :{"Content-Type":"application/json"},
-    //         body:JSON.stringify({email,password})
-    //     }); 
-
-    //     if(response.ok)
-    //     {
-    //         console.log("success")
-    //     }
-    //     else
-    //     {
-    //         console.warn("unsuccess log in")
-    //     }
-    //  }
-    //  catch(error)
-    //  {
-    //     console.error(error);
-    //  }
+    
 
   }
 
@@ -109,7 +90,7 @@ function SignIn() {
             </div>
             <div className='btn-wrapper'>
                <button className='btn-n' onClick={signInHandler}>Sign In</button>
-               <button className='btn-n'>Cancel</button>
+               <button className='btn-n' onClick={()=>router.push("/")}>Cancel</button>
             </div>
         </div>
         

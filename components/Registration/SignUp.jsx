@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import Link from 'next/link'
 import '@/components/Registration/signup.css'
@@ -23,6 +24,8 @@ function SignUp() {
   const [pass,setPass] = useState("");
   const [repass,setRepass] = useState("");
   const [warning,setWarning] = useState("");
+
+  const router = useRouter();
  
   let validEmail;
   let validPass;
@@ -156,7 +159,7 @@ function SignUp() {
             </div>
             <div className='btn-wrapper'>
                <button className='btn-n' onClick={signUpHandler}>Sign Up</button>
-               <button className='btn-n'>Cancel</button>
+               <button className='btn-n' onClick={()=>router.push("/")}>Cancel</button>
             </div>
         </div>
     </div>

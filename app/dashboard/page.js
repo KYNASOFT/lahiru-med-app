@@ -1,8 +1,12 @@
+import PatientOverview from '@/components/PatientManagement/PatientOverview'
+import PatientProfileCompletion from '@/components/PatientManagement/PatientProfileCompletion'
 import React from 'react'
 
 function page() {
   return (
-    <div><h1>This is the dashboard</h1>
+    <div>
+        <PatientOverview/>
+        <PatientProfileCompletion/>
     </div>
   )
 }
