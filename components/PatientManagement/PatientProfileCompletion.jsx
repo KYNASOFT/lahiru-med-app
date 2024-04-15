@@ -5,18 +5,21 @@ import '@/components/PatientManagement/patient_m.css'
 import { QuestionPool } from './QuestionPoolPt';
 
 function PatientProfileCompletion() {
-  
+  let answers = {};
   const [hide,setHide] = useState(false);
   const [answer,setAnswer] = useState();
   const [prompt,setPrompt] = useState("Question 1 ?");
   const [completion,setCompletion] = useState(0);
   
   const addAnswer =()=>{
-      console.log("btn click")
+      
       //clear input 
+      answers[completion] = answer;
+      setAnswer("");
       setCompletion(completion + 1);
       console.log(completion);
       handlePComp();
+      console.log(answers);
   }
 
   const  handlePComp =async ()=>{
