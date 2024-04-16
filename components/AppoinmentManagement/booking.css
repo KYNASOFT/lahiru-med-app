@@ -1,7 +1,7 @@
 .booking-wrapper
 {
-    @apply flex justify-around;
-
+    @apply flex justify-start gap-10;
+    padding: 2%; 
     
 }
 
@@ -10,7 +10,7 @@
     @apply  bg-black/20 ;
     border: black solid 0.2em;
     border-radius: 12px;
-    width: 45%;
+    width: 20%;
 }
 
 .doctor-wrapper
@@ -18,7 +18,7 @@
     @apply  bg-black/20 ;
     border: black solid 0.2em;
     border-radius: 12px;
-    width: 45%;  
+    width: 30%;  
 }
 .main-title
 {
@@ -38,7 +38,7 @@
 }
 .form-group>input
 {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     padding: 2%;
     border: black solid 0.05em;
     border-radius: 12px;
@@ -58,12 +58,13 @@
 
 .normal-btn
 {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     border: white solid 0.2em;
     border-radius: 12px;
-    padding: 3%;
+    padding: 2%;
     @apply bg-teal-500;
-    width: 45%;
+    width: max-content;
+    height: 3em;
     margin-bottom: 5%;
     transition: background-color 0.5s ease-in-out;
 }

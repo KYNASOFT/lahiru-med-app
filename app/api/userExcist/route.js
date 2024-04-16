@@ -9,8 +9,7 @@ export async function POST(req,res)
         let {email} = await req.json();
         await connectMongoDb();
 
-        const user =await User.findOne({email}).select("_id");
-
+        const user =await User.findOne({email});
         return NextResponse.json({user});
 
     }

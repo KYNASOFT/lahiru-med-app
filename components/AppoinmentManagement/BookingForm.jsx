@@ -20,42 +20,76 @@ function BookingForm() {
   const [doc, setDoc] = useState("");
   const{data:session} = useSession("");
   const router = useRouter();  
-  
-  
+
   const getUserDetails =async()=>{
-     const userEmail = session?.user?.email;
-     console.log(userEmail);
+     const email = session?.user?.email;
      try{
-     const res = await fetch('api/getUser',
+      const resUserExcist = await fetch('../api/userExcist',
+      {method:"POST",
+       headers:{
+        "Content-Type":"application/json"
+       },
+       body: JSON.stringify({
+        email
+       })
+      }
+
+    )
+    if(resUserExcist.ok)
+    {
+       const {user} = await resUserExcist.json();
+
+       if(user)
        {
-        method:"POST",
-        headers:{
-           "Content-Type":"application/json"
-        },
-        body: JSON.stringify({
-            userEmail
-        })
-
-     })
-
-     if(res.ok){
-        console.log("data retrieve success")
-     }
-     else{
-        console.log("No such a user")
-     }
+          fillForm(user);
+          return user;
+       }
+    }
+    else{
+      return null;
+    }
     }catch(error){
         console.error(error);
+        return null;
     }
   }
 
- 
+  function fillForm(user){
+      setPatientName(user.username);
+      setPatientAddress(user.address);
+      setPatientBloodGroup(user.bloodtype);
+      setPatientEmail(user.email);
+      setPatientNic(user.nic);
+      setpatientContatNum(user.telephone);
+  }
+
+
   
   const bookingHandler = async ()=>
   {
     
-     console.log(patientName,patientNic,patientAddress,patientEmail,patientContactNum,patientBloodGroup,patientSymptoms);
-    //Backend integeration
+     try{
+      const aptRes = await fetch('../api/bookappoinment',{
+        method:"POST",headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          email:patientEmail,
+          name:patientName,
+          symptoms:patientSymptoms,
+          //fill this later to send every details
+        })
+      })
+      if(aptRes.ok){
+        console.log("appoinment created success");
+      }
+      else{
+        console.log("unsuccess appoinment");
+      }
+
+     }catch(error){
+      console.error(error);
+     }
   
   }
 
@@ -116,7 +150,7 @@ function BookingForm() {
                   ></input>
 
                 <input
-                  type="description" 
+                  type="text-area" 
                   placeholder='Patient Symptoms'
                   name='symptoms'
                   onChange={e=>setPatientSymptoms(e.target.value)}
@@ -125,7 +159,8 @@ function BookingForm() {
                   ></input>
             </div>
             <div className='btn-wrapper'>
-                <button className='normal-btn' onClick={getUserDetails}>Enter Details</button>
+                <button className='normal-btn' onClick={getUserDetails}>Auto Fill</button>
+                <button className='normal-btn' onClick={bookingHandler}>Submit</button>
                 <button className='normal-btn'onClick={()=>router.push('/')}>Cancel</button>
             </div>
         </div>
