@@ -9,8 +9,8 @@ function PatientOverview() {
 
   return (
     <div>
-        <div className='hero-overview'>
-            <h1>Hi <span className='text-4xl font-black'>{session?.user?.email}</span></h1>
+        <div className='hero-overview'>        
+            <h1>Hi <span className='text-4xl font-black'>{session?.user?.email}</span></h1>                            
             <h2>Welcome Back ! Your health is our priority</h2>
         </div>
     </div>
