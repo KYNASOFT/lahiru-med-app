@@ -1,8 +1,8 @@
 import React from 'react'
-
+import BookingForm from '@/components/AppoinmentManagement/BookingForm'
 function page() {
   return (
-    <div>This is the appoinment page</div>
+    <div><BookingForm/></div>
   )
 }
 
