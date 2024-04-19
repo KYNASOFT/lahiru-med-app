@@ -15,6 +15,7 @@ function BookingForm() {
   const [patientContactNum,setpatientContatNum] = useState("");
   const [patientBloodGroup,setPatientBloodGroup] = useState("");
   const [patientSymptoms,setPatientSymptoms] = useState("");
+  const [date,setDate] = useState("");
   
   const [unit,setUnit] = useState("");
   const [doc, setDoc] = useState("");
@@ -186,6 +187,11 @@ function BookingForm() {
                   onChange={e=>setDoc(e.target.value)}
                   value={doc}
                   ></input>
+                <input
+                  type="date"
+                  value={date}
+                  onChange={e=>setDate(e.target.value)}
+                ></input>  
             </div>
         </div>
     </div>
