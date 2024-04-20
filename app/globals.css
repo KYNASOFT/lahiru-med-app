@@ -25,6 +25,7 @@
     grid-template-columns:repeat(8,1fr);
     grid-template-rows: repeat(auto,100px);
     border: orange double 0.4em;
+    min-height:100vh;
     @apply bg-green-300;
 }
 

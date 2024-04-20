@@ -29,10 +29,11 @@ function PatientProfileCompletion() {
 
   const handleSkip =()=>{
       //later add the skip functionality 
+      setCompletion(completion+1);
   }
 
   const handleFinish =async()=>{
-      
+    addAnswer();  
     //pass the data to the api 
     try{
       const resDataEntry = await fetch("api/patientdetails",
@@ -102,7 +103,7 @@ function PatientProfileCompletion() {
                 { QuestionPool.length != completion &&
                 <div className='flex w-80 justify-evenly'>
                      <button className='btn-prompt' onClick={addAnswer}>Add</button>
-                     <button className='btn-prompt'>Skip</button>
+                     <button className='btn-prompt'onClick={handleSkip}>Skip</button>
                 </div>
                 }
                 {

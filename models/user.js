@@ -46,6 +46,10 @@ const  userSchema = Schema({
     profession:{
         type:String,
         required:false
+    },
+    bio:{
+        type:String,
+        required:false
     }
 
 
