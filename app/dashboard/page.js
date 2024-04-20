@@ -6,6 +6,8 @@ import PatientProfileCompletion from '@/components/PatientManagement/PatientProf
 import React from 'react'
 import { getUser } from '@/lib/getUser'
 import QuickSetUpDoc from '@/components/DoctorManagement/QuickSetUpDoc'
+import SpecialitySelection from '@/components/DoctorManagement/SpecialitySelection'
+import DoctorProfile from '@/components/DoctorManagement/DoctorProfile'
 
 
 
@@ -37,9 +39,15 @@ function page() {
   return (
     <div>
       {userType=="doctor" &&
+      <div className='flex'>
         <div>
            <QuickSetUpDoc/>
+           <SpecialitySelection/>
         </div>
+        <div>
+            <DoctorProfile/>
+        </div>
+      </div> 
       } 
       {userType == "pat" &&
         <div>

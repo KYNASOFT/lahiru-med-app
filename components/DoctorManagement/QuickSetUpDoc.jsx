@@ -17,6 +17,7 @@ function QuickSetUpDoc() {
   const [answer,setAnswer] =useState();
   const [hide,setHide] =useState(false);
   const {data:session} = useSession();
+  const [finish,setFinish] = useState(false);
  
   let email = session?.user?.email;
   const addAnswer =() =>{
@@ -65,12 +66,13 @@ function QuickSetUpDoc() {
 
   return (
     <div>
+        {!finish &&
         <div className='q-set-container'>
         <h1>Get Started</h1>
         <h2>Hello Doctor, Help us set up your profile by answering some questions</h2>
         {!hide &&
           <button className='begin-btn' onClick={handleBegin}>Begin</button>}
-        </div>
+        </div>}
         {hide &&
                <div className='flex'>
                 <input
@@ -92,6 +94,7 @@ function QuickSetUpDoc() {
                   <button className='btn-prompt' onClick={handleFinish}>Finish</button>
                 }
                </div>
+              
         }
     </div>
   )
