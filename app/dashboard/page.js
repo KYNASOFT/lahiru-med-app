@@ -8,6 +8,7 @@ import { getUser } from '@/lib/getUser'
 import QuickSetUpDoc from '@/components/DoctorManagement/QuickSetUpDoc'
 import SpecialitySelection from '@/components/DoctorManagement/SpecialitySelection'
 import DoctorProfile from '@/components/DoctorManagement/DoctorProfile'
+import StaffProfileCompletion from '@/components/StaffManagement/StaffProfileCompletion'
 
 
 
@@ -53,7 +54,14 @@ function page() {
         <div>
         <PatientOverview/>
         <PatientProfileCompletion/>
-        </div>}
+        </div>
+      }
+      {userType == "staff" &&
+         <div>
+           <StaffProfileCompletion/>
+         </div>
+
+      }
     </div>
   )
 }
