@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const EmployeeSchema = new Schema({
+const StaffSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -25,5 +25,5 @@ const EmployeeSchema = new Schema({
     }
 })
 
-export const Employee =
-    mongoose.models.Employee || mongoose.model('Employee', EmployeeSchema)
+export const Staff =
+    mongoose.models.Staff || mongoose.model('Staff', StaffSchema)

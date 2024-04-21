@@ -1,3 +1,34 @@
+import { connectDb } from "@/Staff/database/db";
+import { Employee } from "@/models/Staff";
+import { NextResponse } from "next/server";
+
+// Connect Db 
+connectDb();
+
+//ROUTE 1 : GET Employee [http://localhost:3000/api/Staff]
+export async function GET() {
+    try {
+        // Create Get Staff
+        const getStaff = await Staff.find();
+
+        // Return getStaff
+        return NextResponse.json(getStaff)
+    } catch (error) {
+        console.log(error);
+
+        // return error
+        return NextResponse.json(
+            {
+                error: "Failed to get Staff",
+            },
+            {
+                status: 404,
+            }
+        )
+    }
+}
+
+
 //ROUTE 2 : POST Staff Detail [http://localhost:3000/api/Staff]
 export async function POST(request) {
     // get Staff data from frontend 
