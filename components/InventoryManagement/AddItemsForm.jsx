@@ -22,6 +22,7 @@ function AddItemsForm() {
           })
           if(res.ok){
              console.log("Added succes");
+             window.location.reload();
           }
           else{
              console.log("Unsuccess entry");
@@ -39,7 +40,7 @@ function AddItemsForm() {
         <h1 className='title'>Add Item</h1>
         <form onSubmit={handleAdd}>
         <div className='form-g'>
-        <label for="itemName">Item Name:</label>
+        <label htmlFor="itemName">Item Name:</label>
         <input 
            type="text" 
            id="itemName" 
@@ -50,7 +51,7 @@ function AddItemsForm() {
         </div>
         <br/>
         <div className='form-g'>
-        <label for="itemQuantity">Item Quantity:</label>
+        <label htmlFor="itemQuantity">Item Quantity:</label>
         <input 
             type="number" 
             id="itemQuantity" 

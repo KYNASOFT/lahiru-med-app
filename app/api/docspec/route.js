@@ -19,12 +19,16 @@ export async function POST(req,res){
             if(docRes){
                 return NextResponse.json({docRes});
             }
-            else{
-                return null;
-            }
+            
+        }
+        else{
+            return NextResponse.json({
+                res:"bad",ok:false,
+                status:401
+            })
         }
     }catch(error){
         console.error(error);
-        return null;
+        
     }
 }
