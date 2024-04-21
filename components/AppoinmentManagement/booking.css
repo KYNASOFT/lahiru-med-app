@@ -73,3 +73,22 @@
     @apply bg-teal-200;
    
 }
+.opt-ctrl{
+    display: flex;
+    justify-content: space-between;
+    background-color: #3A57A7;
+    padding: 1%;
+    margin-bottom: 10px;
+    gap: 5px;
+    width: 80%;
+    border-radius: 10px;
+}
+.form-q-title{
+    font-size: 1.8rem;
+    color: white;
+}
+.input-sel{
+    font-size: 1.8rem;
+    border-radius: 10px;
+    background-color: #46CEC0;
+}

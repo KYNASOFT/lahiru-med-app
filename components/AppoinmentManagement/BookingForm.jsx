@@ -1,10 +1,11 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import '@/components/AppoinmentManagement/booking.css'
+import { getAllDocs, getDocBySpecs } from '@/lib/getDocBySpecs'
 
 function BookingForm() {
 
@@ -16,11 +17,29 @@ function BookingForm() {
   const [patientBloodGroup,setPatientBloodGroup] = useState("");
   const [patientSymptoms,setPatientSymptoms] = useState("");
   const [date,setDate] = useState("");
+  const [time,setTime] = useState("");
   
-  const [unit,setUnit] = useState("");
+  const [spec,setSpec] = useState("");
   const [doc, setDoc] = useState("");
   const{data:session} = useSession("");
   const router = useRouter();  
+
+  const [doctors,setDoctors] = useState([]);
+  const handleSelection =(e)=>{
+       setSpec(e.target.value);
+  }
+
+  useEffect(()=>{
+
+    console.log("change of the speciality",spec);
+    async function fetchDoctors(){
+         let docsSpecs = await getDocBySpecs(spec);
+         setDoctors(docsSpecs);       
+    }
+    fetchDoctors();
+    console.log(doctors);
+
+  },[spec]);
 
   const getUserDetails =async()=>{
      const email = session?.user?.email;
@@ -172,13 +191,26 @@ function BookingForm() {
             </div>
 
             <div className='form-group'>
-                <input
-                  type="text"
-                  placeholder='Unit that you are looking for'
-                  name='unit'
-                  onChange={e=>setUnit(e.target.value)}
-                  value={unit}
-                  ></input>
+            <div className='opt-ctrl'>
+            <label className='form-q-title' htmlFor="specialty">Doctor's Specialty:</label>
+            <select className='input-sel' id="specialty" value={spec} onChange={handleSelection} >
+              <option value="">Select Specialty</option>
+              <option value="Cardiologist">Cardiologist</option>
+              <option value="Dermatologist">Dermatologist</option>
+              <option value="Pediatrician">Pediatrician</option>
+              <option value="Physician">Physician</option>
+              <option value="Surgeon">Surgeon</option>
+              <option value="Eye Surgeon">Eye Surgeon</option>
+              <option value="Neurologist">Neurologist</option>
+              <option value="Obstetrician/Gynocologist">Obstetrician/Gynocologist</option>
+              <option value="Psychiatrist">Psychiatrist</option>
+              <option value="ENT">ENT</option>
+              <option value="Dermatologist">Dermatologist</option>
+              <option value="Therapist">Occupational Therapist</option>
+              <option value="Physiotherapist">Physiotherapist</option>
+            {/* Add more options as needed */}
+          </select>
+        </div>
 
                 <input
                   type="text"
@@ -191,7 +223,14 @@ function BookingForm() {
                   type="date"
                   value={date}
                   onChange={e=>setDate(e.target.value)}
-                ></input>  
+                ></input> 
+                <input
+                  type="time"
+                  placeholder='Time'
+                  name='doctor'
+                  onChange={e=>setTime(e.target.value)}
+                  value={time}
+                  ></input> 
             </div>
         </div>
     </div>
