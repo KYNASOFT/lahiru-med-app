@@ -1,0 +1,43 @@
+label{
+    font-size: 2.0rem;
+}
+input{
+    font-size: 1.8rem;
+    text-align: center;
+}
+.title{
+    background-color:#3A57A7 ;
+    color: white;
+    font-size: 2.4rem;
+    text-align: center;
+    padding:2%;
+    margin-bottom: 15px;
+}
+.it-form-container{
+    background-color: #46CEC0;
+    max-width: fit-content;
+    border: solid white 0.2em;
+    border-radius: 10px;
+    padding: 2%;
+    margin: 0.5%;
+}
+.form-g{
+    display: flex;
+    justify-content: space-between;
+    border: solid white 0.05em;
+    @apply my-1;
+}
+.btn-nr{
+    background-color: #006E91;
+    font-size: 2.0rem;
+    padding: 1%;
+    width: 100%;
+    border: solid white 0.05em;
+    color: white;
+
+    transition: background-color,color 0.8s ease-in-out;
+}
+.btn-nr:hover{
+    background-color: #89d4eb;
+    color: black;
+}
