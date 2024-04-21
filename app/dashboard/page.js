@@ -39,7 +39,7 @@ function page() {
   return (
     <div>
       {userType=="doctor" &&
-      <div className='flex'>
+      <div className='flex gap-2'>
         <div>
            <QuickSetUpDoc/>
            <SpecialitySelection/>

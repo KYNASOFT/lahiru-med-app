@@ -1,3 +1,4 @@
+//this will update user table with doctor details
 import { connectMongoDb } from "@/lib/mongoDb";
 import User from "@/models/user";
 import { NextResponse } from "next/server";
