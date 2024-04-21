@@ -1,0 +1,59 @@
+.hero-overview{
+    padding: 0.5%;
+    border: solid 0.1em;
+    max-width: 50%;
+    border-radius: 0.5em;
+    margin: 0.5%;
+}
+
+.comp_container{
+
+    padding: 0.5%;
+    border: solid 0.1em;
+    max-width: 50%;
+    border-radius: 0.5em;
+    margin: 0.5%;
+    background-color: #91B5C1;
+}
+.btn-normal{
+    font-size: 1.8rem;
+    font-weight: 700;
+    border: solid 0.1em;
+    border-radius: 0.5em;
+    min-width: 10%;
+    color: white;
+    background-color: #CE4654;
+    margin-top: 1em;
+    transition: background-color,color 0.5s ease-out;
+}
+.btn-normal:hover{
+    background-color: hsla(354, 77%, 74%);
+    color: black;
+}
+.q-input{
+    font-size: 2.0rem;
+    width: 100%;
+    padding: 0.2%;
+    text-align: center;
+}
+
+h1{
+    font-size: 2.4rem;
+    
+}
+h2{
+    font-size: 2.0rem;
+}
+
+.btn-prompt{
+    font-size: 2.0rem;
+    min-width: 10%;
+    background-color:#46CEC0;
+    border: solid black 0.1em;
+    border-radius: 0.5em;
+    margin-left: 0.5em;
+    transition: background-color 0.5s ease-out;
+}
+.btn-prompt:hover{
+    background-color:#d4f7f3;   
+}

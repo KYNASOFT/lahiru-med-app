@@ -1,0 +1,59 @@
+h1{
+    font-size: 2.4rem;
+}
+h2{
+    font-size: 2.0rem;
+}
+h3{
+    font-size: 1.8rem;
+}
+p{
+    font-size: 1.6rem;
+}
+.begin-btn{
+    font-size: 1.8rem;
+    border: solid white 0.05em;
+    width: 150px;
+    padding: 0.5%;
+    border-radius: 5px;
+    background-color: #CE4654 ;
+    color:white;
+    transition: background-color,color 0.5s ease-out;
+}
+.begin-btn:hover{
+    background-color: #e48e96;
+    color:black;
+    transition:background-color,color,transform 0.5s ease-in;
+}
+.begin-btn:active{
+    background-color: #CE4654;
+    color:white;
+    transform: translateX(5%);
+}
+.q-set-container
+{
+    padding:1.1%;
+    background-color: #46CEC0;
+    @apply my-2;
+    border: solid white 0.1rem;
+    border-radius: 10px;
+}
+.form-q-title{
+    font-size: 2.0rem;
+}
+.input-sel{
+    font-size: 1.8rem;
+}
+.input-sel option{
+    font-size: 1.8rem;
+}
+.opt-ctrl{
+    display: flex;
+    gap: 20px;
+}
+.sub-title{
+    background-color:#3A57A7;
+    color: white;
+    padding: 2%;
+    border-radius: 10px;
+}

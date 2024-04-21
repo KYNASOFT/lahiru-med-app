@@ -1,10 +1,10 @@
-"use client"
+'use client'
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import Link from 'next/link'
-import '@/components/Registration/signup.css'
+import '@/components/AdminComponents/adminpage.css';
 
 
 const signErors ={
@@ -24,14 +24,54 @@ function SignUp() {
   const [pass,setPass] = useState("");
   const [repass,setRepass] = useState("");
   const [warning,setWarning] = useState("");
-
+  const [successmsg,setSuccessmsg] =useState("");
+  const [showcopy,setShowcopy] = useState(false);
   const router = useRouter();
  
   let validEmail;
   let validPass;
-
-  const signUpHandler=async () =>
+  const copySys = () =>
   {
+    // Create a temporary textarea element
+    const textarea = document.createElement('textarea');
+
+    // Set the text content to be copied
+     textarea.value = "Email = "+email+" Password = " + repass;
+
+    // Make sure the textarea is not visible on the screen
+    textarea.style.position = 'fixed';
+    textarea.style.top = 0;
+    textarea.style.left = 0;
+    textarea.style.width = '1px';
+    textarea.style.height = '1px';
+    textarea.style.opacity = 0;
+
+    // Append the textarea to the DOM
+    document.body.appendChild(textarea);
+
+    // Select the text inside the textarea
+    textarea.select();
+
+    try {
+    // Execute the copy command
+    const successful = document.execCommand('copy');
+    if (successful) {
+      console.log('Text copied to clipboard');
+      alert("Copied");
+    } else {
+      console.error('Unable to copy text to clipboard');
+      alert("Unable to copy");
+    }
+    } catch (error) {
+      console.error('Unable to copy text to clipboard:', error);
+    }
+
+    // Remove the textarea from the DOM
+    document.body.removeChild(textarea);
+  }
+
+    const signUpHandler=async () =>
+    {
      
     //   console.log(email,pass,repass);
       if(emailPattern.test(email))
@@ -60,7 +100,7 @@ function SignUp() {
       {
           try{
             //here call userExcist api to get if user already registered
-            const resUserExcist = await fetch('api/userExcist',
+            const resUserExcist = await fetch('http://localhost:3000/api/userExcist',
               {method:"POST",
                headers:{
                 "Content-Type":"application/json"
@@ -88,7 +128,7 @@ function SignUp() {
 
 
 
-            const res = await fetch('api/users',
+            const res = await fetch('http://localhost:3000/api/adminregister',
             {
               method: "POST",
               headers: {
@@ -102,16 +142,18 @@ function SignUp() {
             )
             if(res.ok)
             {
-               console.log("Sent data to the api form sign up")
+               setSuccessmsg("Added the account successfully");
+               setShowcopy(true);
+               console.log("Sent data to the api form sign up");
             }
             else
             {
-               console.log("not sending the data from sign up")
+               console.log("not sending the data from sign up");
             }
           }
           catch(error)
           {
-              console.log("Error from sign up - " + error)
+              console.log("Error from sign up - " + error);
           }
           
 
@@ -120,12 +162,18 @@ function SignUp() {
       
   }
 
+  const refresh=()=>
+  {
+      window.location.reload();
+  }
+
   return (
-    <div className=''>
+    <div className='my-20'>
         <div className='form-head'>
-            <h1 className='main-title'>Sign Up</h1>
-            <h2 className='des-title'>Connecting You to Care</h2>
+            <h1 className='main-title'>Create an Admin</h1>
+            <h2 className='des-title'>This will provide admin privilage to another person</h2>
             <h2 className='su-warn'>{warning}</h2>
+            <h2 className='su-success'>{successmsg}</h2>
         </div>
         <div className='form-body'>
             <input
@@ -154,12 +202,12 @@ function SignUp() {
             ></input>
         </div>
         <div className='form-bottom'>
-            <div>
-                <Link className='redirect-link' href={'/signin'}>Already have an account Sign in instead</Link>
-            </div>
             <div className='btn-wrapper'>
-               <button className='btn-n' onClick={signUpHandler}>Sign Up</button>
-               <button className='btn-n' onClick={()=>router.push("/")}>Cancel</button>
+               <button className='btn-n' onClick={signUpHandler}>Create</button>
+               <button className='btn-n' onClick={refresh}>Cancel</button>
+               {showcopy && 
+                 <button className='btn-n' onClick={copySys}>Copy</button>
+               }
             </div>
         </div>
     </div>

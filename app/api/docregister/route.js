@@ -15,7 +15,7 @@ export async function POST(req,res)
     //connecting to the database 
     await connectMongoDb();
     //create a new user
-    await User.create({email,password: hashedPassword,userType:"pat"});
+    await User.create({email,password: hashedPassword,userType:"doctor"});
     if(!email || !repass)
     {
         return NextResponse.json(
@@ -38,5 +38,3 @@ export async function POST(req,res)
     
 
 }
-
-

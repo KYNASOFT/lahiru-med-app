@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation'
 import React from 'react'
 import '@/components/Registration/signup.css'
 import Link from 'next/link'
-import { signIn } from 'next-auth/react'
-
+import { signIn, signOut } from 'next-auth/react'
+import { getUser } from '@/lib/getUser'
 
 function SignIn() {
 
@@ -15,6 +15,7 @@ function SignIn() {
   const [warn,setWarn] =useState("")
   
   const router = useRouter();
+
   const signInHandler = async() =>{
 
     //this function should validate user 
@@ -37,13 +38,22 @@ function SignIn() {
             password,
             redirect:false,
         })
-
+        console.log("From admin sign in ", email,password);
+        const userx = await getUser(email,'api/userExcist');
+        console.log(userx);
         if(res.error)
         {
             setWarn("Invalid credentials");
         }
+        else if(userx.user.userType === "admin")
+        {
+            
+            router.replace('/admin/dashboard');
+        }
         else{
-            router.replace('/dashboard');
+            setWarn("Not an admin");
+            signOut();
+            router.replace('/admin');
         }
      }catch(error)
      {
@@ -58,9 +68,8 @@ function SignIn() {
   return (
     <div className=''>
         <div className='form-head'>
-            <h1 className='main-title'>Sign In</h1>
-            <h2 className='des-title'>"Welcome back! Your health journey continues here. 
-            Let's securely unlock the door to your medical records and personalized care"</h2>
+            <h1 className='main-title'>Admin Sign In</h1>
+            <h2 className='des-title'>"Authorizied Personal Only"</h2>
             <h3 className='su-warn'>{warn}</h3>
         </div>
 
@@ -85,9 +94,6 @@ function SignIn() {
         </div>
 
         <div className='form-bottom'>
-            <div>
-                <Link className='redirect-link' href={'/signup'}>Not registered user. Sign up instead</Link>
-            </div>
             <div className='btn-wrapper'>
                <button className='btn-n' onClick={signInHandler}>Sign In</button>
                <button className='btn-n' onClick={()=>router.push("/")}>Cancel</button>
