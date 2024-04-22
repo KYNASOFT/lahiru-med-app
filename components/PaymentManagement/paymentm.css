@@ -28,3 +28,17 @@
     margin: 10px 10px;
     padding: 3%;
 }
+.cn-btn{
+    font-size: 2.0rem;
+    padding: 3%;
+    background-color: #CE4654;
+    border: solid white 0.01em;
+    border-radius: 10px;
+    color:white;
+    margin: 10px ;
+    transition: background-color 0.5s ease-in;
+}
+.cn-btn:hover{  
+    background-color: #37df9e;
+    
+}
